@@ -9,16 +9,11 @@ if __name__ == "__main__":
 
     op = argv[2]
     func = {"+": add, "-": sub, "*": mul, "/": div}
-
-    a = int(argv[1])
-    b = int(argv[3])
-
-    def not_found(a, b):
-        a = 0
-        b = 0
+    if op not in func:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
 
-    results = func.get(op, not_found)(a, b)
-
+    a = int(argv[1])
+    b = int(argv[3])
+    results = func[op](a, b)
     print("{} {} {} = {}".format(a, op, b, results))
