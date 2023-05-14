@@ -15,5 +15,5 @@ if __name__ == "__main__":
 
     a = int(argv[1])
     b = int(argv[3])
-    results = func[op](a, b)
-    print("{} {} {} = {}".format(a, op, b, results))
+    result = func[op](a, b)
+    print("{} {} {} = {}".format(a, op, b, result))

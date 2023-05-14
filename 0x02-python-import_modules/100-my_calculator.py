@@ -14,8 +14,6 @@ if __name__ == "__main__":
     b = int(argv[3])
 
     def not_found(a, b):
-        a = 0
-        b = 0
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
 
