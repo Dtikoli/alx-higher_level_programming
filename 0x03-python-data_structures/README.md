@@ -1,4 +1,4 @@
-This repository contains projects that illustrates the following concepts specific to python:
+This repository contains projects that illustrate the following concepts specific to python:
 1. What are lists and how to use them
 2. What are the differences and similarities between strings and lists
 3. What are the most common methods of lists and how to use them
