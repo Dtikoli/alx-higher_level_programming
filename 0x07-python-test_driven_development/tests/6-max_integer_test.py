@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for the max_integer module
+""" Unittest for the max_integer module
 """
 
 import unittest
@@ -7,22 +7,22 @@ max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
-    """TestCase for the max_integer function."""
+    """ TestCase for the max_integer function. """
 
     def test_regular(self):
-        """Test with a regular list of ints: should return the max result"""
+        """ Test with a regular list of ints: should return the max result """
         l = [1, 2, 3, 4, 5]
         result = max_integer(l)
         self.assertEqual(result, 5)
 
     def test_not_int(self):
-        """Test with a list of non-ints and ints:
-        should raise a TypeError exception"""
+        """ Test with a list of non-ints and ints:
+        should raise a TypeError exception. """
         l = ["a", "b", 9]
         self.assertRaises(TypeError, max_integer, l)
 
     def test_empty(self):
-        """Test with an empty list: should return None"""
+        """ Test with an empty list: should return None """
         l = []
         result = max_integer(l)
         self.assertEqual(result, None)
