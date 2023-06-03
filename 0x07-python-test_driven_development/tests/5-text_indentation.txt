@@ -9,7 +9,7 @@ Import the function:
 
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Test cases:
+Test cases (All):
 
     >>> text_indentation("Hello.")
     Hello.
