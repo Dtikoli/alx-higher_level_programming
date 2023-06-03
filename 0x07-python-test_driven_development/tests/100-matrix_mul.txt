@@ -9,7 +9,7 @@ Import the function:
 
     >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
 
-Now test it:
+Test cases (All):
 
     >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
     [[7, 10], [15, 22]]
