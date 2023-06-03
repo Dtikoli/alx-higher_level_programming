@@ -9,7 +9,7 @@ Import the function:
 
     >>> say_my_name  = __import__('3-say_my_name').say_my_name
 
-Test cases:
+Test cases (All):
 
     >>> say_my_name("Paul", "Walker")
     My name is Paul Walker
@@ -30,7 +30,7 @@ Test cases:
     TypeError: first_name must be a string
 
     >>> say_my_name("", "Kojo")
-    My name is Kojo
+    My name is  Kojo
 
     >>> say_my_name("", "")
     My name is  
