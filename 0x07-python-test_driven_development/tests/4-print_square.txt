@@ -9,7 +9,7 @@ Import the function:
 
     >>> print_square = __import__('4-print_square').print_square
 
-Test cases:
+Test cases (All):
 
     >>> print_square(4)
     ####
