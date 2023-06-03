@@ -1,0 +1,65 @@
+=============================
+The ``0-add_integer`` module
+=============================
+
+Using ``add_integer``
+---------------------
+
+Import the function:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Success cases:
+
+Test signed and unsigned ints and floats:
+     >>> add_integer(1, 0)
+     1
+     >>> add_integer(-2, 2)
+     0
+     >>> add_integer(1.0, 2.5)
+     3
+     >>> add_integer(-2.9, 1)
+     -1
+
+Test use of default b=98 value:
+     >>> add_integer(1)
+     99
+
+Failure cases:
+
+Test no args:
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Test extra args:
+     >>> add_integer(1, 2, 3)
+     Traceback (most recent call last):
+     ...
+     TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Test other data types:
+     >>> add_integer("hey")
+     Traceback (most recent call last):
+     ...
+     TypeError: a must be an integer
+     >>> add_integer(0, [1, 2, 3])
+     Traceback (most recent call last):
+     ...
+     TypeError: b must be an integer
+
+Test max/min numbers Python can handle ("inf" is infinity):
+     >>> add_integer(float("inf"))
+     Traceback (most recent call last):
+     ...
+     OverflowError: cannot convert float infinity to integer
+     >>> add_integer(float("-inf"))
+     Traceback (most recent call last):
+     ...
+     OverflowError: cannot convert float infinity to integer
+
+Test special float NaN in Python (not a number):
+     >>> add_integer(float("nan"))
+     Traceback (most recent call last):
+     ...
+     ValueError: cannot convert float NaN to integer
