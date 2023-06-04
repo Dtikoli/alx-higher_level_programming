@@ -9,16 +9,16 @@ def matrix_mul(m_a, m_b):
     """Return the matrix resulting of
     the multiplication of m_a and m_b."""
 
-    if type(m_a) is not list:
+    if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
-    if type(m_b) is not list:
+    if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
 
-    for x in m_a:
-        if type(x) is not list:
+    for row in m_a:
+        if not isinstance(row, list):
             raise TypeError("m_a must be a list of lists")
-    for x in m_b:
-        if type(x) is not list:
+    for row in m_b:
+        if not isinstance(row, list):
             raise TypeError("m_b must be a list of lists")
 
     if m_a == [] or m_a == [[]]:
