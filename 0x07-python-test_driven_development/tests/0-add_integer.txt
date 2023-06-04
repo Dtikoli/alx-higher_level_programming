@@ -30,7 +30,12 @@ Failure cases:
 Test no args:
     >>> add_integer()
     Traceback (most recent call last):
+	      ...
     TypeError: add_integer() missing 1 required positional argument: 'a'
+    >>> add_integer(None)
+    Traceback (most recent call last):
+	      ...
+    TypeError: a must be an integer
 
 Test extra args:
      >>> add_integer(1, 2, 3)
