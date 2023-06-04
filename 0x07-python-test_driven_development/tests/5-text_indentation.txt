@@ -70,7 +70,7 @@ Test cases (All):
     >>> text_indentation("School")
     School
 
-    >>> text_indentation(9)
+    >>> text_indentation(9.5)
     Traceback (most recent call last):
     TypeError: text must be a string
 
