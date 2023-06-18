@@ -41,7 +41,7 @@ class TestRectangle_insantiation(unittest.TestCase):
     def test_three_args(self):
         rec1 = Rectangle(3, 4, 6)
         rec2 = Rectangle(4, 3, 2)
-        self.assertEqual(rec1.id + 1, r2.id)
+        self.assertEqual(rec1.id + 1, rec2.id)
 
     def test_four_args(self):
         rec1 = Rectangle(3, 4, 6, 8)
@@ -105,7 +105,7 @@ class TestRectangle_insantiation(unittest.TestCase):
     def test_y_setter(self):
         rec = Rectangle(4, 3, 2, 6, 1)
         rec.y = 12
-        self.assertEqual(rec.y)
+        self.assertEqual(rec.y, 12)
 
 
 class TestRectangle_width(unittest.TestCase):
@@ -137,7 +137,7 @@ class TestRectangle_width(unittest.TestCase):
 
     def test_bool_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(False, 3)
+            Rectangle(True, 3)
 
     def test_list_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -201,7 +201,7 @@ class TestRectangle_height(unittest.TestCase):
 
     def test_bool_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(3, False)
+            Rectangle(3, True)
 
     def test_float_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
@@ -547,7 +547,7 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_one(self):
         rec = Rectangle(10, 10, 10, 10, 10)
         rec.update(40)
-        self.assertEqual("[Rectangle] (89) 10/10 - 10/10", str(rec))
+        self.assertEqual("[Rectangle] (40) 10/10 - 10/10", str(rec))
 
     def test_update_args_two(self):
         rec = Rectangle(10, 10, 10, 10, 10)
