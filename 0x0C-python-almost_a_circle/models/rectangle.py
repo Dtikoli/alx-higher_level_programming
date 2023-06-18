@@ -62,15 +62,15 @@ class Rectangle(Base):
 
     def area(self):
         """Returns the area of the rectangle"""
-        return (self.width * self.height)
+        return (self.__width * self.__height)
 
     def display(self):
         """Prints to stdout a visual display of the rectangle"""
-        rec_disp = ""
-        print("\n" * self.y, end="")
-        for i in range(self.height):
-            rec_disp += (" " * self.x) + ("#" * self.width) + "\n"
-        print(rec_disp, end="")
+        disp = ""
+        print("\n" * self__.y, end="")
+        for i in range(self.__height):
+            disp += (" " * self__.x) + ("#" * self__.width) + "\n"
+        print(disp, end="")
 
     def update(self, *args, **kwargs):
         """Updates the arguments in the class"""
@@ -79,11 +79,11 @@ class Rectangle(Base):
                 self.__setattr__(key, val)
             return
         try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
+            self.__id = args[0]
+            self.__width = args[1]
+            self.__height = args[2]
+            self.__x = args[3]
+            self.__y = args[4]
         except IndexError:
             pass
 
@@ -107,9 +107,9 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns the str representation of the class"""
-        i = self.id
-        x = self.x
-        y = self.y
-        w = self.width
-        h = self.height
+        i = self.__id
+        x = self.__x
+        y = self.__y
+        w = self.__width
+        h = self.__height
         return (f"[Rectangle] ({i}) {x}/{y} - {w}/{h}")

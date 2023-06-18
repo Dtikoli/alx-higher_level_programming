@@ -28,20 +28,24 @@ class Square(Rectangle):
 
     def __str__(self):
         """String representation of square"""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        i = self.__id
+        x = self.__x
+        y = self.__y
+        s = self.__size
+        return f"[Square] ({i}) {x}/{y} - {s}"
 
     def update(self, *args, **kwargs):
         """Updates the arguments in the class"""
         if len(args):
             for i, arg in enumerate(args):
                 if i == 0:
-                    self.id = arg
+                    self.__id = arg
                 elif i == 1:
-                    self.size = arg
+                    self.__size = arg
                 elif i == 2:
-                    self.x = arg
+                    self.__x = arg
                 elif i == 3:
-                    self.y = arg
+                    self.__y = arg
         else:
             for key, value in kwargs.items():
                 if hasattr(self, key) is True:
@@ -50,8 +54,8 @@ class Square(Rectangle):
     def to_dictionary(self):
         """returns dictonary representation of square"""
         return {
-            "id": self.id,
-            "size": self.size,
-            "x": self.x,
-            "y": self.y
+            "id": self.__id,
+            "size": self.__size,
+            "x": self.__x,
+            "y": self.__y
         }
