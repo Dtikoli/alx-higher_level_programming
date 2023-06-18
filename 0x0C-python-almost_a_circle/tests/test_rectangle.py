@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A unittests module for models/rectangle.py.
+"""A unittests module for models/rectangle.py class.
 Unittest classes:
     line 22 - TestRectangle_instantiation
     line 111 - TestRectangle_width
