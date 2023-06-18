@@ -28,7 +28,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """String representation of square"""
-        i = self.__id
+        i = self.id
         x = self.__x
         y = self.__y
         s = self.__size
@@ -39,7 +39,7 @@ class Square(Rectangle):
         if len(args):
             for i, arg in enumerate(args):
                 if i == 0:
-                    self.__id = arg
+                    self.id = arg
                 elif i == 1:
                     self.__size = arg
                 elif i == 2:
@@ -54,7 +54,7 @@ class Square(Rectangle):
     def to_dictionary(self):
         """returns dictonary representation of square"""
         return {
-            "id": self.__id,
+            "id": self.id,
             "size": self.__size,
             "x": self.__x,
             "y": self.__y

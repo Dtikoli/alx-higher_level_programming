@@ -79,7 +79,7 @@ class Rectangle(Base):
                 self.__setattr__(key, val)
             return
         try:
-            self.__id = args[0]
+            self.id = args[0]
             self.__width = args[1]
             self.__height = args[2]
             self.__x = args[3]
@@ -107,7 +107,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns the str representation of the class"""
-        i = self.__id
+        i = self.id
         x = self.__x
         y = self.__y
         w = self.__width
