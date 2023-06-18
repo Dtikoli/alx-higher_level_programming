@@ -42,12 +42,12 @@ class Base:
             list_objs (list): A list of inherited Base instances.
         """
         filename = cls.__name__ + ".json"
-        with open(filename, "w") as jsonfile:
+        with open(filename, "w") as jfile:
             if list_objs is None:
-                jsonfile.write("[]")
+                jfile.write("[]")
             else:
-                list_dicts = [obj.to_dictionary() for obj in list_objs]
-                jsonfile.write(Base.to_json_string(list_dicts))
+                list_dic = [obj.to_dictionary() for obj in list_objs]
+                jfile.write(Base.to_json_string(list_dic))
 
     @staticmethod
     def from_json_string(json_string):
@@ -86,9 +86,9 @@ class Base:
         """
         filename = str(cls.__name__) + ".json"
         try:
-            with open(filename, "r") as jsonfile:
-                list_dicts = Base.from_json_string(jsonfile.read())
-                return [cls.create(**d) for d in list_dicts]
+            with open(filename, "r") as jfile:
+                list_dic = Base.from_json_string(jfile.read())
+                return [cls.create(**dct) for dct in list_dic]
         except IOError:
             return []
 
@@ -99,17 +99,17 @@ class Base:
             list_objs (list): A list of inherited Base instances.
         """
         filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as csvfile:
+        with open(filename, "w", newline="") as cfile:
             if list_objs is None or list_objs == []:
-                csvfile.write("[]")
+                cfile.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                list_dic = csv.DictWriter(cfile, fieldnames=fieldnames)
                 for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+                    list_dic.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -121,15 +121,15 @@ class Base:
         """
         filename = cls.__name__ + ".csv"
         try:
-            with open(filename, "r", newline="") as csvfile:
+            with open(filename, "r", newline="") as cfile:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
-                return [cls.create(**d) for d in list_dicts]
+                list_dic = csv.DictReader(cfile, fieldnames=fieldnames)
+                list_dic = [dict([key, int(val)] for key, val in dct.items())
+                              for dct in list_dic]
+                return [cls.create(**dct) for dct in list_dic]
         except IOError:
             return []
 
