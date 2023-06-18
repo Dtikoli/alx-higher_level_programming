@@ -11,18 +11,16 @@ class Square(Rectangle):
         """Initialization an instance of Square"""
         self.setter_validation("size", size)
         super().__init__(size, size, x, y, id)
-        self.size = size
 
     @property
     def size(self):
         """Gets the size of the Square"""
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
         """Sets the size of the Square"""
-        self.setter_validation("size", value)
-        self.__size = value
+        self.setter_validation("size", size)
         self.width = value
         self.height = value
 
@@ -31,7 +29,7 @@ class Square(Rectangle):
         i = self.id
         x = self.x
         y = self.y
-        s = self.__size
+        s = self.width
         return f"[Square] ({i}) {x}/{y} - {s}"
 
     def update(self, *args, **kwargs):
@@ -41,7 +39,7 @@ class Square(Rectangle):
                 if i == 0:
                     self.id = arg
                 elif i == 1:
-                    self.__size = arg
+                    self.width = arg
                 elif i == 2:
                     self.x = arg
                 elif i == 3:
@@ -55,7 +53,7 @@ class Square(Rectangle):
         """returns dictonary representation of square"""
         return {
             "id": self.id,
-            "size": self.__size,
+            "size": self.width,
             "x": self.x,
             "y": self.y
         }
