@@ -67,9 +67,9 @@ class Rectangle(Base):
     def display(self):
         """Prints to stdout a visual display of the rectangle"""
         disp = ""
-        print("\n" * self__.y, end="")
+        print("\n" * self.__y, end="")
         for i in range(self.__height):
-            disp += (" " * self__.x) + ("#" * self__.width) + "\n"
+            disp += (" " * self.__x) + ("#" * self.__width) + "\n"
         print(disp, end="")
 
     def update(self, *args, **kwargs):
