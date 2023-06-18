@@ -1,4 +1,4 @@
-The files in this repository contain projects that summarizes my up-to-date knowledge on python. Concepts covered include:
+This repository contain projects that summarizes my up-to-date knowledge on python. Concepts covered include:
 1. Import
 2. Exceptions
 3. Class

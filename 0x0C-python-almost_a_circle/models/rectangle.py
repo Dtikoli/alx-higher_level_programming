@@ -5,9 +5,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """
-        Represents the Rectangle class that inherits from Base class
-    """
+    """Represents the Rectangle class that inherits from Base class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
