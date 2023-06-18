@@ -43,9 +43,9 @@ class Square(Rectangle):
                 elif i == 1:
                     self.__size = arg
                 elif i == 2:
-                    self.__x = arg
+                    self.x = arg
                 elif i == 3:
-                    self.__y = arg
+                    self.y = arg
         else:
             for key, value in kwargs.items():
                 if hasattr(self, key) is True:
@@ -56,6 +56,6 @@ class Square(Rectangle):
         return {
             "id": self.id,
             "size": self.__size,
-            "x": self.__x,
-            "y": self.__y
+            "x": self.x,
+            "y": self.y
         }
