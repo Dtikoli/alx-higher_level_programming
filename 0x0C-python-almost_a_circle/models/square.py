@@ -23,8 +23,8 @@ class Square(Rectangle):
         """Sets the size of the Square"""
         self.setter_validation("size", value)
         self.__size = value
-        self.__width = value
-        self.__height = value
+        self.width = value
+        self.height = value
 
     def __str__(self):
         """String representation of square"""
