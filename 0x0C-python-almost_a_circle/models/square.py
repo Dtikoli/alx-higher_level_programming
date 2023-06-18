@@ -29,8 +29,8 @@ class Square(Rectangle):
     def __str__(self):
         """String representation of square"""
         i = self.id
-        x = self.__x
-        y = self.__y
+        x = self.x
+        y = self.y
         s = self.__size
         return f"[Square] ({i}) {x}/{y} - {s}"
 
