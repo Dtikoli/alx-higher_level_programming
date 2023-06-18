@@ -9,7 +9,6 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None):
         """Initialization an instance of Square"""
-        self.setter_validation("size", size)
         super().__init__(size, size, x, y, id)
 
     @property
@@ -20,7 +19,6 @@ class Square(Rectangle):
     @size.setter
     def size(self, value):
         """Sets the size of the Square"""
-        self.setter_validation("size", value)
         self.width = value
         self.height = value
 
