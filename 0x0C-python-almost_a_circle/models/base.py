@@ -146,28 +146,28 @@ class Base:
         turt.shape("turtle")
 
         turt.color("#ffffff")
-        for rec in list_rectangles:
+        for rect in list_rectangles:
             turt.showturtle()
             turt.up()
-            turt.goto(rec.x, rec.y)
+            turt.goto(rect.x, rect.y)
             turt.down()
-            for j in range(2):
-                turt.forward(rec.width)
+            for i in range(2):
+                turt.forward(rect.width)
                 turt.left(90)
-                turt.forward(rec.height)
+                turt.forward(rect.height)
                 turt.left(90)
             turt.hideturtle()
 
         turt.color("#b5e3d8")
-        for sqr in list_squares:
+        for sq in list_squares:
             turt.showturtle()
             turt.up()
-            turt.goto(sqr.x, sqr.y)
+            turt.goto(sq.x, sq.y)
             turt.down()
-            for j in range(2):
-                turt.forward(sqr.width)
+            for i in range(2):
+                turt.forward(sq.width)
                 turt.left(90)
-                turt.forward(sqr.height)
+                turt.forward(sq.height)
                 turt.left(90)
             turt.hideturtle()
 
