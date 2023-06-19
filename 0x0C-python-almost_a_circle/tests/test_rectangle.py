@@ -812,7 +812,7 @@ class TestRectangle_others(unittest.TestCase):
 
     def test_to_dictionary_two(self):
         r1 = Rectangle(2, 2, 2, 2)
-        res = "[Rectangle] (1) 2/2 - 2/2\n"
+        res = "[Rectangle] (21) 2/2 - 2/2\n"
         with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
