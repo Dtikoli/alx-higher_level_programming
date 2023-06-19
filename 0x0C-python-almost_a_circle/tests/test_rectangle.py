@@ -1,20 +1,23 @@
 #!/usr/bin/python3
 """A unittests module for models/rectangle.py class.
 Unittest classes:
-    line 22 - TestRectangle_instantiation
-    line 111 - TestRectangle_width
-    line 187 - TestRectangle_height
-    line 263 - TestRectangle_x
-    line 335 - TestRectangle_y
-    line 403 - TestRectangle_orderof_initialization
-    line 454 - TestRectangle_area
-    line 538 - TestRectangle_update_args
-    line 676 - TestRectangle_update_kwargs
-    line 788 - TestRectangle_others
+    line 25 - TestRectangle_instantiation
+    line 114 - TestRectangle_width
+    line 190 - TestRectangle_height
+    line 266 - TestRectangle_x
+    line 338 - TestRectangle_y
+    line 406 - TestRectangle_orderof_initialization
+    line 457 - TestRectangle_area
+    line 541 - TestRectangle_update_args
+    line 679 - TestRectangle_update_kwargs
+    line 791 - TestRectangle_others
 """
 import io
 import sys
 import unittest
+from io import StringIO
+from unittest import TestCase
+from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -788,6 +791,52 @@ class TestRectangle_update_kwargs(unittest.TestCase):
 class TestRectangle_others(unittest.TestCase):
     """Unittests for testing to_dictionary, create and load-from-file."""
 
+    def test_to_dictionary_one(self):
+        r1 = Rectangle(1, 2, 3, 4, 1)
+        res = "[Rectangle] (1) 3/4 - 1/2\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(r1)
+            self.assertEqual(str_out.getvalue(), res)
+
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+        self.assertEqual(r1.y, 4)
+        self.assertEqual(r1.id, 1)
+
+        res = "<class 'dict'>\n"
+
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(type(r1.to_dictionary()))
+            self.assertEqual(str_out.getvalue(), res)
+
+    def test_to_dictionary_two(self):
+        r1 = Rectangle(2, 2, 2, 2)
+        res = "[Rectangle] (1) 2/2 - 2/2\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(r1)
+            self.assertEqual(str_out.getvalue(), res)
+
+        r2 = Rectangle(5, 7)
+        res = "[Rectangle] (2) 0/0 - 5/7\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(r2)
+            self.assertEqual(str_out.getvalue(), res)
+
+        r1_dictionary = r1.to_dictionary()
+        r2.update(**r1_dictionary)
+
+        self.assertEqual(r1.width, r2.width)
+        self.assertEqual(r1.height, r2.height)
+        self.assertEqual(r1.x, r2.x)
+        self.assertEqual(r1.y, r2.y)
+        self.assertEqual(r1.id, r2.id)
+
+        res = "<class 'dict'>\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(type(r1_dictionary))
+            self.assertEqual(str_out.getvalue(), res)
+
     def test_to_dictionary_output(self):
         rec = Rectangle(10, 2, 1, 9, 5)
         correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
@@ -803,6 +852,16 @@ class TestRectangle_others(unittest.TestCase):
         rec = Rectangle(10, 2, 4, 1, 2)
         with self.assertRaises(TypeError):
             rec.to_dictionary(1)
+
+    def test_dict_to_json(self):
+        r1 = Rectangle(2, 2)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        res = "[{}]\n".format(dictionary.__str__())
+
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(json_dictionary)
+            self.assertEqual(str_out.getvalue(), res.replace("'", "\""))
 
     def test_create_one(self):
         dictionary = {'id': 89}
