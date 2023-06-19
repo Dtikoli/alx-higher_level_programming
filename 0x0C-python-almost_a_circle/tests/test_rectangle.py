@@ -791,6 +791,10 @@ class TestRectangle_update_kwargs(unittest.TestCase):
 class TestRectangle_others(unittest.TestCase):
     """Unittests for testing to_dictionary, create and load-from-file."""
 
+    def setUp(self):
+        """Method invoked for tests"""
+        Base._Base__nb_objects = 0
+
     def test_to_dictionary_one(self):
         r1 = Rectangle(1, 2, 3, 4, 1)
         res = "[Rectangle] (1) 3/4 - 1/2\n"
@@ -812,7 +816,7 @@ class TestRectangle_others(unittest.TestCase):
 
     def test_to_dictionary_two(self):
         r1 = Rectangle(2, 2, 2, 2)
-        res = "[Rectangle] (21) 2/2 - 2/2\n"
+        res = "[Rectangle] (1) 2/2 - 2/2\n"
         with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
