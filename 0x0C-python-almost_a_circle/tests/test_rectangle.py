@@ -10,7 +10,7 @@ Unittest classes:
     line 454 - TestRectangle_area
     line 538 - TestRectangle_update_args
     line 676 - TestRectangle_update_kwargs
-    line 788 - TestRectangle_to_dictionary
+    line 788 - TestRectangle_others
 """
 import io
 import sys
@@ -785,8 +785,8 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         self.assertEqual("[Rectangle] (40) 19/7 - 10/3", str(rec))
 
 
-class TestRectangle_to_dictionary(unittest.TestCase):
-    """Unittests for testing to_dictionary method of the Rectangle class."""
+class TestRectangle_others(unittest.TestCase):
+    """Unittests for testing to_dictionary, create and load-from-file."""
 
     def test_to_dictionary_output(self):
         rec = Rectangle(10, 2, 1, 9, 5)
@@ -803,6 +803,56 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         rec = Rectangle(10, 2, 4, 1, 2)
         with self.assertRaises(TypeError):
             rec.to_dictionary(1)
+
+    def test_create_one(self):
+        dictionary = {'id': 89}
+        r1 = Rectangle.create(**dictionary)
+        self.assertEqual(r1.id, 89)
+
+    def test_create_two(self):
+        dictionary = {'id': 89, 'width': 1}
+        r1 = Rectangle.create(**dictionary)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+
+    def test_create_three(self):
+        dictionary = {'id': 89, 'width': 1, 'height': 2}
+        r1 = Rectangle.create(**dictionary)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+
+    def test_create_four(self):
+        dictionary = {'id': 89, 'width': 1, 'height': 2, 'x': 3}
+        r1 = Rectangle.create(**dictionary)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+
+    def test_create_five(self):
+        dictionary = {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4}
+        r1 = Rectangle.create(**dictionary)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+        self.assertEqual(r1.y, 4)
+
+    def test_load_from_file_one(self):
+        load_file = Rectangle.load_from_file()
+        self.assertEqual(load_file, [])
+
+    def test_load_from_file_two(self):
+        r1 = Rectangle(5, 5)
+        r2 = Rectangle(8, 2, 5, 5)
+
+        linput = [r1, r2]
+        Rectangle.save_to_file(linput)
+        loutput = Rectangle.load_from_file()
+
+        for i in range(len(linput)):
+            self.assertEqual(linput[i].__str__(), loutput[i].__str__())
 
 
 if __name__ == "__main__":
