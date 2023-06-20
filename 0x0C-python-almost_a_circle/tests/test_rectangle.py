@@ -917,6 +917,54 @@ class TestRectangle_others(unittest.TestCase):
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
 
+    def test_saving_to_file(self):
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        r1 = Rectangle(5, 10, 0, 0, 346)
+        Rectangle.save_to_file([r1])
+
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+        res = [{"x": 0, "y": 0, "id": 346, "height": 10, "width": 5}]
+        self.assertEqual(res, json.loads(content))
+
+    def test_saving_to_file_no_iter(self):
+        r1 = Rectangle(5, 10)
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file(r1)
+
+    def test_saving_to_file_None(self):
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        r1 = Rectangle(5, 10, 0, 0, 346)
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+
+        self.assertEqual("[]", content)
+
+    def test_saving_to_file_type(self):
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        r1 = Rectangle(5, 10, 0, 0, 346)
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+
+        self.assertEqual(str, type(content))
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+
 
 if __name__ == "__main__":
     unittest.main()

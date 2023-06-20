@@ -404,3 +404,51 @@ class TestSquareMethods(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
+    def test_saving_to_file(self):
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        r1 = Square(5, 0, 0, 346)
+        Square.save_to_file([r1])
+
+        with open("Square.json", "r") as file:
+            content = file.read()
+        res = [{"id": 346, "x": 0, "size": 5, "y": 0}]
+        self.assertEqual(res, json.loads(content))
+
+    def test_saving_to_file_no_iter(self):
+        r1 = Square(10)
+        with self.assertRaises(TypeError):
+            Square.save_to_file(r1)
+
+    def test_saving_to_file_None(self):
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        r1 = Square(5, 0, 0, 346)
+        Square.save_to_file(None)
+
+        with open("Square.json", "r") as file:
+            content = file.read()
+
+        self.assertEqual("[]", content)
+
+    def test_saving_to_file_type(self):
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        r1 = Square(5, 0, 0, 346)
+        Square.save_to_file([r1])
+
+        with open("Square.json", "r") as file:
+            content = file.read()
+
+        self.assertEqual(str, type(content))
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
