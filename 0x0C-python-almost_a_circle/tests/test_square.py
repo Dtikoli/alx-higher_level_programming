@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A unittests module for models/square.py class"""
 import unittest
+import json
 from io import StringIO
 from unittest import TestCase
 from unittest.mock import patch

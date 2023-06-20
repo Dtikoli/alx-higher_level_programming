@@ -1,20 +1,21 @@
 #!/usr/bin/python3
 """A unittests module for models/rectangle.py class.
 Unittest classes:
-    line 25 - TestRectangle_instantiation
-    line 114 - TestRectangle_width
-    line 190 - TestRectangle_height
-    line 266 - TestRectangle_x
-    line 338 - TestRectangle_y
-    line 406 - TestRectangle_orderof_initialization
-    line 457 - TestRectangle_area
-    line 541 - TestRectangle_update_args
-    line 679 - TestRectangle_update_kwargs
-    line 791 - TestRectangle_others
+    line 26 - TestRectangle_instantiation
+    line 115 - TestRectangle_width
+    line 191 - TestRectangle_height
+    line 267 - TestRectangle_x
+    line 337 - TestRectangle_y
+    line 407 - TestRectangle_orderof_initialization
+    line 458 - TestRectangle_area
+    line 542 - TestRectangle_update_args
+    line 678 - TestRectangle_update_kwargs
+    line 790 - TestRectangle_others
 """
 import io
 import sys
 import unittest
+import json
 from io import StringIO
 from unittest import TestCase
 from unittest.mock import patch
