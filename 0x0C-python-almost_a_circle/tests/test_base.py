@@ -6,7 +6,6 @@ from unittest.mock import patch
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
-from io import StringIO
 
 
 class TestBaseMethods(unittest.TestCase):
@@ -52,35 +51,22 @@ class TestBaseMethods(unittest.TestCase):
         with self.assertRaises(AttributeError):
             new.__nb_objects
 
-    def test_save_to_file_one(self):
+    def test_save_to_file_square_one(self):
         Square.save_to_file(None)
-        res = "[]\n"
         with open("Square.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
+            self.assertEqual(file.read(), "{}")
 
-        try:
-            os.remove("Square.json")
-        except Exception:
-            pass
-
+    def test_save_to_file_square_two(self):
         Square.save_to_file([])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
-    def test_save_to_file_two(self):
+    def test_save_to_file_rectangle_one(self):
         Rectangle.save_to_file(None)
-        res = "[]\n"
         with open("Rectangle.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-        try:
-            os.remove("Rectangle.json")
-        except Exception:
-            pass
+            self.assertEqual(file.read(), "[]")
 
+    def test_save_to_file_rectangle_two(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
