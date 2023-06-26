@@ -54,7 +54,7 @@ class TestBaseMethods(unittest.TestCase):
     def test_save_to_file_square_one(self):
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "{}")
+            self.assertEqual(file.read(), "[]")
 
     def test_save_to_file_square_two(self):
         Square.save_to_file([])
