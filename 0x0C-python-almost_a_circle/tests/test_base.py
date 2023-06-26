@@ -52,7 +52,7 @@ class TestBaseMethods(unittest.TestCase):
         with self.assertRaises(AttributeError):
             new.__nb_objects
 
-    def test_save_to_file_one(self):
+    def test_save_to_file_square_one(self):
         Square.save_to_file(None)
         res = "[]\n"
         with open("Square.json", "r") as file:
@@ -65,11 +65,12 @@ class TestBaseMethods(unittest.TestCase):
         except Exception:
             pass
 
+    def test_save_to_file_square_two(self):
         Square.save_to_file([])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
-    def test_save_to_file_two(self):
+    def test_save_to_file_rectangle_one(self):
         Rectangle.save_to_file(None)
         res = "[]\n"
         with open("Rectangle.json", "r") as file:
@@ -81,6 +82,7 @@ class TestBaseMethods(unittest.TestCase):
         except Exception:
             pass
 
+    def test_save_to_file_rectangle_two(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
