@@ -1,5 +1,5 @@
 -- Creates a table called first_table in the current database in my MySQL server
--- Should fail if first_table aready exist
+-- Should not fail if first_table aready exist
 -- Table Descrition:
 --                  id INT
 --                  name VARCHAR(256)
