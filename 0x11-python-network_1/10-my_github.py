@@ -9,6 +9,8 @@ from requests.auth import HTTPBasicAuth
 
 
 if __name__ == "__main__":
+    url = "https://api.github.com/user"
     authen = HTTPBasicAuth(sys.argv[1], sys.argv[2])
-    request = requests.get("https://api.github.com/user", auth=authen)
+    response = requests.get(url, auth=authen)
+
     print(request.json().get("id"))

@@ -12,7 +12,7 @@ if __name__ == "__main__":
     url = sys.argv[1]
     dic = {"email": sys.argv[2]}
     qstring = urllib.parse.urlencode(dic).encode("ascii")
+    requrl = urllib.request.Request(url, data=qstring)
 
-    request = urllib.request.Request(url, data=qstring)
-    with urllib.request.urlopen(request) as response:
+    with urllib.request.urlopen(requrl) as response:
         print(response.read().decode("utf-8"))

@@ -11,10 +11,10 @@ if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
     letter = "" if len(sys.argv) == 1 else sys.argv[1]
     dic = {"q": letter}
+    response = requests.post(url, data=dic)
 
-    request = requests.post(url, data=dic)
     try:
-        response = request.json()
+        response = response.json()
         if response == {}:
             print("No result")
         else:
