@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     request = urllib.request.Request(url)
     with urllib.request.urlopen(request) as response:
-        print(dict(response.headers).get(key))
+        print(response.headers[key])
