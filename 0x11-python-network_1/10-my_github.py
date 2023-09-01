@@ -13,4 +13,4 @@ if __name__ == "__main__":
     authen = HTTPBasicAuth(sys.argv[1], sys.argv[2])
     response = requests.get(url, auth=authen)
 
-    print(request.json().get("id"))
+    print(response.json().get("id"))
