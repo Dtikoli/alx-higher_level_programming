@@ -10,7 +10,7 @@ import urllib.request
 if __name__ == "__main__":
     url = sys.argv[1]
     key = "X-Request-Id"
-
-    request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as response:
+    requrl = urllib.request.Request(url)
+    
+    with urllib.request.urlopen(requrl) as response:
         print(response.headers[key])
