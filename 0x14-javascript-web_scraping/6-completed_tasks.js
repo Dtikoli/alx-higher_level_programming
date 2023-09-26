@@ -4,15 +4,20 @@ const request = require('request');
 const url = process.argv[2];
 
 request(url, (error, response, content) => {
-  const resp = {};
-  const task = JSON.parse(content);
-  for (let i = 0; i < task.length; i++) {
-    if (task[i].completed) {
-      if (resp[task[i].userId] === undefined) {
-        resp[task[i].userId] = 0;
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  const taskCompleted = {};
+  const todoList = JSON.parse(content);
+  for (const task of todoList) {
+    if (task.completed) {
+      if (!taskCompleted[task.userId]) {
+        taskCompleted[task.userId] = 0;
       }
-      resp[task[i].userId]++;
+      taskCompleted[task.userId]++;
     }
   }
-  console.log(error || resp);
+  console.log(taskCompleted);
 });
