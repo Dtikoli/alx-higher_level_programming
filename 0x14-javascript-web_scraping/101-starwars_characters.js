@@ -12,12 +12,14 @@ request(url, (error, response, content) => {
 });
 
 function printCharacters (characters, index) {
+  if (index >= characters.length) {
+    return;
+  }
+
   request(characters[index], (error, response, content) => {
     if (!error) {
       console.log(JSON.parse(content).name);
-      if (index + 1 < characters.length) {
-        printCharacters(characters, index + 1);
-      }
+      printCharacters(characters, index + 1);
     }
   });
 }
