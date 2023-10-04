@@ -4,6 +4,6 @@ $(document).ready(function() {
     type: "GET",
     dataType: "json"
   }).done(function(data) {
-    $('#character').text(data.name);
+    $('DIV#character').text(data.name);
   });
 });
