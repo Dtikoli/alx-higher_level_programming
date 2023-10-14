@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('#btn_translate').click(function () {
+  $('#btn_translate').on('click', function () {
     const languageCode = $('#language_code').val();
 
     $.ajax({

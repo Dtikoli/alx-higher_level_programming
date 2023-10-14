@@ -1,13 +1,13 @@
 $(document).ready(function () {
-  $('#add_item').click(function () {
+  $('#add_item').on('click', function () {
     $('.my_list').append('<li>Item</li>');
   });
 
-  $('#remove_item').click(function () {
+  $('#remove_item').on('click', function () {
     $('.my_list li:last-child').remove();
   });
 
-  $('#clear_list').click(function () {
+  $('#clear_list').on('click', function () {
     $('.my_list').empty();
   });
 });

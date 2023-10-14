@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  $('#btn_translate').click(fetchTranslation);
+  $('#btn_translate').on('click', fetchTranslation);
 
-  $('#language_code').keypress(function (even) {
-    if (even.which === 13) {
+  $('#language_code').on('keypress', function (event) {
+    if (event.key === 'Enter') {
       fetchTranslation();
     }
   });
